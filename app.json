@@ -17,9 +17,13 @@
       "**/*"
     ],
     "ios": {
+      "bundleIdentifier":"com.happetite.rn-education",
+      "buildNumber":"1.0.0",
       "supportsTablet": true
     },
     "android": {
+      "package":"com.happetite.rn_education",
+      "versionCode":1,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
