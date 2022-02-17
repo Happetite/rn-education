@@ -1,9 +1,16 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {View,Text, TextInput, StyleSheet, ScrollView} from 'react-native';
 
 export const WriteScreen=(props)=>{
     const [title,setTitle]=useState();
     const [content,setContent]=useState();
+    //1.react navigation library에서 제공되는 header 사용
+    // useEffect(()=>{
+    //     props.navigation.setOptions({
+    //         headerLeft:<Button onPress={()=>{props.navigation.navigate("Main")}}/>
+    //         headerRight:
+    //     })
+    // },[])
     return(
         <View style={styles.main}>
             {/* 1 .뒤로가기, 저장버튼 */}
