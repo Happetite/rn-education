@@ -16,13 +16,8 @@ export const TodoCard=(props)=>{
         <TouchableOpacity  onPress={props.onPress}>
               <View style={styles.card}>
                 <View>
-                    <Text style={{fontFamily:"customFont1"}} >
-                    {props.index}
-                    </Text>
-                </View>
-                <View>
                     <Text>
-                    {props.content}
+                    {props.title}
                     </Text>
                 </View>
               </View>
@@ -35,12 +30,13 @@ const styles=StyleSheet.create({
     card:{
         backgroundColor:"white",
         height:50,
-        width:300,
+        width:320,
         borderRadius:15,
         elevation:1, //android->ios에서는 작동 x
         shadowColor:"black" ,
         shadowRadius:1 , //ios->android 작동 x
         alignItems:"center",
+        justifyContent:"center"
         
     }
 })

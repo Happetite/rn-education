@@ -5,6 +5,7 @@ import {MainScreen} from '../screens/MainScreen';
 import {ReadScreen} from '../screens/ReadScreen';
 import {WriteScreen} from '../screens/WriteScreen';
 import {Button} from 'react-native'
+import { EditScreen } from '../screens/EditScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -12,20 +13,30 @@ export const Container=(props)=>{
     return(
         <NavigationContainer>
             <Stack.Navigator initialRouteName={"Main"}>
-                <Stack.Screen name={"Main"} component={MainScreen}  />
+                <Stack.Screen name={"Main"} component={MainScreen}
+                options={{headerTitleAlign:"center", title:"To Do List"}}
+                />
                 <Stack.Screen name={"Write"}
                 component={WriteScreen} 
-                options={(props)=>
-                   { 
-                       return(
-                        {headerLeft:()=>(<Button title="작성취소" onPress={()=>{props.navigation.navigate("Main")}} />),
-                        headerRight:()=>(<Button title="저장" onPress={()=>{props.navigation.navigate("Main")}}/>)
-                        }
-                        )
+                options={{headerTitleAlign:"center", title:"작성 페이지"}}
+                />
+                <Stack.Screen name={"Read"} component={ReadScreen}  
+                options={(props)=>{
+                    return(
+                    {
+                        headerTitleAlign:"center",
+                        title:props.route.params.title
+                    })
+                }}
+                />
+                <Stack.Screen name={"Edit"} component={EditScreen}  
+                options={
+                    {
+                        headerTitleAlign:"center",
+                        title:"수정 페이지"
                     }
                 }
                 />
-                <Stack.Screen name={"Read"} component={ReadScreen}  />
             </Stack.Navigator>
         </NavigationContainer>
     )

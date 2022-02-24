@@ -1,27 +1,27 @@
 import React, {useEffect, useState} from 'react';
 import {View,Text, TextInput, StyleSheet, ScrollView, Button} from 'react-native';
 
-export const WriteScreen=(props)=>{ 
-    const [title,setTitle]=useState("");
-    const [content,setContent]=useState("");
-    //1.react navigation library에서 제공되는 header 사용
-    //수정하는 화면이어야 한다면,
+export const EditScreen=(props)=>{ 
+    const [title,setTitle]=useState(props.route.params.title);
+    const [content,setContent]=useState(props.route.params.content);
     useEffect(()=>{
         props.navigation.setOptions({
             headerLeft:()=>{
-                return (<Button title={"작성취소"} onPress={()=>{props.navigation.navigate("Main")}}/>)
+                return (<Button title={"수정 취소"} onPress={()=>{props.navigation.goBack()}}/>)
             },
             headerRight:()=>{
                 
                 return (
-                <Button title={"저장"} onPress={()=>{
-                    let currentDate=new Date();
-                    let id=currentDate.toISOString();
+                <Button title={"수정"} onPress={()=>{
+                    // let currentDate=new Date();
+                    let id=props.route.params.id;
                     props.navigation.navigate(
                     {
                     name:"Main", 
                     params:{id:id, title:title, content:content}
-                })}}/>)
+                    }
+                    )
+            }}/>)
             }
         })
     },[title,content])
@@ -38,14 +38,12 @@ export const WriteScreen=(props)=>{
                 />
             </View>
             <ScrollView
-            style={{borderWidth:1, width:"90%"}}
-            >
+            style={{borderWidth:1, width:"90%"}}>
                 <TextInput 
                 value={content}
                 onChangeText={setContent}
                 placeholder={"할 일을 적어주세요!"}
                 multiline={true}
-                
                 />
             </ScrollView>
         </View>
