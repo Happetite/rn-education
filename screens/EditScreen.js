@@ -1,7 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import {View,Text, TextInput, StyleSheet, ScrollView, Button} from 'react-native';
-
+import {useDispatch} from 'react-redux';
+import { editTodo } from '../store/actions/TodoActions';
 export const EditScreen=(props)=>{ 
+    const dispatch=useDispatch();
     const [title,setTitle]=useState(props.route.params.title);
     const [content,setContent]=useState(props.route.params.content);
     useEffect(()=>{
@@ -15,10 +17,10 @@ export const EditScreen=(props)=>{
                 <Button title={"수정"} onPress={()=>{
                     // let currentDate=new Date();
                     let id=props.route.params.id;
+                    dispatch(editTodo(id,title,content));
                     props.navigation.navigate(
                     {
-                    name:"Main", 
-                    params:{id:id, title:title, content:content}
+                    name:"Main"
                     }
                     )
             }}/>)

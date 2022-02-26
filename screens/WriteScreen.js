@@ -21,8 +21,7 @@ export const WriteScreen=(props)=>{
                     const currentDate=new Date();
                     //글로벌한 state에다가 todo 추가
                     dispatch(addTodo(currentDate.toISOString, title, content));
-                    props.navigation.navigate("Main")
-                
+                    props.navigation.navigate("Main");
                     }}
                     />)
             }

@@ -8,8 +8,7 @@ export const MainScreen=(props)=>{
     const height=useWindowDimensions().height;
     //state 접근
     const todos=useSelector(state=>state.todo.todo);
-    const count=useSelector(state=>state.todo.count);
-    console.log(count);
+    
     // const [todos, setTodos]=useState([]);
     // parameter를 전달받는다면, -> 해당 오브젝트를 state에 저장
     // 인식을 먼저해야됨 -> 저장 명령

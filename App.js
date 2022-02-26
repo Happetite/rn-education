@@ -15,9 +15,10 @@ import {
 } from "react-native";
 import React, { useState } from "react";
 import {Container} from './Navigator/Container'
-import {createStore, combineReducers} from 'redux'
+import {createStore, combineReducers, applyMiddleware} from 'redux'
 import { TodoReducer } from "./store/reducer/TodoReducer";
-import {Provider} from 'react-redux'
+import {Provider} from 'react-redux';
+import ReduxThunk from 'redux-thunk';
 
 export default function App(){
   //여러가지 reducer들을 한번에 모아주는  역할
@@ -26,7 +27,7 @@ export default function App(){
     todo: TodoReducer
   });
 
-  const store=createStore(rootReducer);
+  const store=createStore(rootReducer,applyMiddleware(ReduxThunk));
 
   return(
     
