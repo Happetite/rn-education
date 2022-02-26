@@ -1,27 +1,32 @@
 import React, {useEffect, useState} from 'react';
 import {View,Text, Button, StyleSheet, TouchableHighlight, useWindowDimensions, FlatList, Alert} from 'react-native';
 import {TodoCard} from '../components/TodoCard';
+import { useSelector } from 'react-redux';
 
 export const MainScreen=(props)=>{
     const width=useWindowDimensions().width;
     const height=useWindowDimensions().height;
-    const [todos,setTodos]=useState([]);
+    //state 접근
+    const todos=useSelector(state=>state.todo.todo);
+    const count=useSelector(state=>state.todo.count);
+    console.log(count);
+    // const [todos, setTodos]=useState([]);
     // parameter를 전달받는다면, -> 해당 오브젝트를 state에 저장
     // 인식을 먼저해야됨 -> 저장 명령
-    useEffect(()=>{
-        if(props.route.params?.id){
-            const newItem=props.route.params
-            setTodos((prev)=>{
-                let exId=prev.findIndex(elem=>elem.id===newItem.id)
-                if(exId!=-1){
-                    let newState=[...prev];
-                    newState[exId]=newItem;
-                    return newState;
-                }
-                return [newItem,...prev]
-            });
-        }
-    },[props.route.params?.id]);
+    // useEffect(()=>{
+    //     if(props.route.params?.id){
+    //         const newItem=props.route.params
+    //         setTodos((prev)=>{
+    //             let exId=prev.findIndex(elem=>elem.id===newItem.id)
+    //             if(exId!=-1){
+    //                 let newState=[...prev];
+    //                 newState[exId]=newItem;
+    //                 return newState;
+    //             }
+    //             return [newItem,...prev]
+    //         });
+    //     }
+    // },[props.route.params?.id]);
     
     
 

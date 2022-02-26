@@ -1,7 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import {View,Text, TextInput, StyleSheet, ScrollView, Button} from 'react-native';
-
+import { useDispatch } from 'react-redux';
+import { addTodo } from '../store/actions/TodoActions';
 export const WriteScreen=(props)=>{ 
+    const dispatch=useDispatch();
     const [title,setTitle]=useState("");
     const [content,setContent]=useState("");
     //1.react navigation library에서 제공되는 header 사용
@@ -15,13 +17,14 @@ export const WriteScreen=(props)=>{
                 
                 return (
                 <Button title={"저장"} onPress={()=>{
-                    let currentDate=new Date();
-                    let id=currentDate.toISOString();
-                    props.navigation.navigate(
-                    {
-                    name:"Main", 
-                    params:{id:id, title:title, content:content}
-                })}}/>)
+                    
+                    const currentDate=new Date();
+                    //글로벌한 state에다가 todo 추가
+                    dispatch(addTodo(currentDate.toISOString, title, content));
+                    props.navigation.navigate("Main")
+                
+                    }}
+                    />)
             }
         })
     },[title,content])
