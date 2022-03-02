@@ -3,6 +3,7 @@ import {View,Text,Button} from 'react-native';
 
 export const ReadScreen=(props)=>{
     const param=props.route.params;
+    console.log(param);
     useEffect(
         ()=>{
             props.navigation.setOptions({

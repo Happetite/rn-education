@@ -19,12 +19,14 @@ import {createStore, combineReducers, applyMiddleware} from 'redux'
 import { TodoReducer } from "./store/reducer/TodoReducer";
 import {Provider} from 'react-redux';
 import ReduxThunk from 'redux-thunk';
+import { AuthReducer } from "./store/reducer/AuthReducer";
 
 export default function App(){
   //여러가지 reducer들을 한번에 모아주는  역할
   
   const rootReducer= combineReducers({
-    todo: TodoReducer
+    todo: TodoReducer,
+    auth: AuthReducer,
   });
 
   const store=createStore(rootReducer,applyMiddleware(ReduxThunk));

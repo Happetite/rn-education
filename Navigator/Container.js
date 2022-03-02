@@ -6,13 +6,14 @@ import {ReadScreen} from '../screens/ReadScreen';
 import {WriteScreen} from '../screens/WriteScreen';
 import {Button} from 'react-native'
 import { EditScreen } from '../screens/EditScreen';
+import { AuthScreen } from '../screens/AuthScreen';
 
 const Stack = createNativeStackNavigator();
 
 export const Container=(props)=>{
     return(
         <NavigationContainer>
-            <Stack.Navigator initialRouteName={"Main"}>
+            <Stack.Navigator initialRouteName={"Auth"}>
                 <Stack.Screen name={"Main"} component={MainScreen}
                 options={{headerTitleAlign:"center", title:"To Do List"}}
                 />
@@ -37,6 +38,7 @@ export const Container=(props)=>{
                     }
                 }
                 />
+                <Stack.Screen name={"Auth"} component={AuthScreen} />
             </Stack.Navigator>
         </NavigationContainer>
     )

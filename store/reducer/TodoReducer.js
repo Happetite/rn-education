@@ -1,4 +1,4 @@
-import { ADD_TODO, EDIT_TODO } from "../actions/TodoActions";
+import { ADD_TODO, EDIT_TODO, FETCH_TODO } from "../actions/TodoActions";
 
 
 
@@ -26,12 +26,19 @@ export const TodoReducer=(state=initialState, action)=>{
             // ******
             editedArr[index]={id:action.id,title:action.title,content:action.content};
             return {...state, todo:editedArr}
+        case FETCH_TODO:
+            return {...state,todo:action.todoArray};
         default:
             return state;
 
     }
 }
 
+
+//authentication
+//회원가입.로그인->유저계정이 만들어지고, 접근권한
+
+//token
 
 
 
