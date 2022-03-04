@@ -33,9 +33,11 @@ export const addTodo=(title,content)=>{
 export const EDIT_TODO="EDIT_TODO";
 
 export const editTodo=(id, title, content)=>{
-    return async (dispatch)=>{
+    return async (dispatch,getState)=>{
+        const userId=getState().auth.userId;
+        const token=getState().auth.token;
         const response=
-        await fetch(`https://rn-education-default-rtdb.asia-southeast1.firebasedatabase.app/testUser1/todo/${id}.json`,
+        await fetch(`https://rn-education-default-rtdb.asia-southeast1.firebasedatabase.app/${userId}/todo/${id}.json?auth=${token}`,
         {
             method: "PATCH",
             headers: {
